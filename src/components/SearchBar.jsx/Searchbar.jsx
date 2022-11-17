@@ -2,23 +2,41 @@ import React, { useState, useEffect } from "react";
 
 
 const SearchBar = () => {
-    const [searchValue, setsearchValue] = useState("")
+    const [searchValue, setSearchValue] = useState("")
+    const [books, setBooks] = useState([])
 
-    const HandleInputChange = (event) => {
-        setsearchValue(event.target.value)
+
+    const HandleClearClick = () => {
+        setSearchValue("")
+        if (searchValue === "") {
+            setBooks([])
+        }
     }
-    const HandleclearClick = () => {
-        setsearchValue("")
-    }
+
     useEffect(() => {
-        fetch('https://www.googleapis.com/books/v1/volumes?q=hhe').then(res => res.json()).then()
-    })
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&maxResults=20`)
+            .then(res => res.json())
+            .then(data => {
+                setBooks(data.items)
+            })
+        console.log(searchValue)
+    }, [searchValue])
     return (
         <div>
-            <input type="text" value={searchValue} onChange={HandleInputChange} />
-            <br />
-            <button onClick={HandleclearClick}>Clear</button>
-
+            <input type="text" onChange={e => {
+                setSearchValue(e.target.value)
+            }} />
+            <button onClick={HandleClearClick}>Clear</button>
+            <ul>
+                {books ? books.map((book) => {
+                    return (
+                        <li key={book.id}>
+                            <h5>{book.volumeInfo.title}</h5>
+                            <img src={book.volumeInfo?.imageLinks?.thumbnail} alt="" />
+                        </li>
+                    )
+                }) : null}
+            </ul>
         </div>
     )
 }

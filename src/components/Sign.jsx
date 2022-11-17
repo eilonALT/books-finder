@@ -18,7 +18,6 @@ const Sign = () => {
                 <h1>Sign In now !</h1>
                 <input type="text" placeholder="user name" onChange={(e) => {
                     setUsername(e.target.value)
-                    // console.log(username)
                 }} />
                 <br />
                 <input type="password" placeholder="password" onChange={(e) => {
