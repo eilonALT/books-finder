@@ -19,11 +19,14 @@ const Sign = () => {
                     setUsername(e.target.value)
                     // console.log(username)
                 }} />
+                <br/>
                 <input type="password" placeholder="password" onChange={(e) => {
                     setPassword(e.target.value)
                     console.log(password)
                 }} />
-                <button onClick={Signin()}>Sign In</button>
+                <br/>
+                <button onClick={Signin}>Sign In</button>
+                <br/>
                 <button>Sign Up</button>
             </div>
         </div>
