@@ -11,12 +11,13 @@ import './App.css';
 import Home from './components/Home';
 import Search from './components/Search';
 import WishList from './components/WishList';
+import Sign from './components/Sign';
 
 function App() {
   return (
     <Router>
       <div>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -28,13 +29,15 @@ function App() {
               <Link to="/wishlist">Wish List</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
         <Routes>
+        <Route path="/" element={<Sign/>}>
+          </Route>
           <Route path="/search" element={<Search/>}>
           </Route>
           <Route path="/wishlist" element={<WishList/>}>
           </Route>
-          <Route path="/" element={<Home/>}>
+          <Route path="/home" element={<Home/>}>
           </Route>
         </Routes>
       </div>
