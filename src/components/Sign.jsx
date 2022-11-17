@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 const Sign = () => {
     const [username, setUsername] = useState("")
@@ -12,15 +12,17 @@ const Sign = () => {
     }
     return (
         <div className="sign">
-            <h1 >Books Finder</h1>
-            <h2>Find your favorite books</h2>
+            <div className="sign_left_container">
+                <h1 >Books Finder</h1>
+                <h2>Find your favorite books now</h2>
+            </div>
             <div className="sign-form">
-                <h1>Sign In now !</h1>
-                <input type="text" placeholder="user name" onChange={(e) => {
+                <h1>Sign In </h1>
+                <input type="text" placeholder="User Name..." onChange={(e) => {
                     setUsername(e.target.value)
                 }} />
                 <br />
-                <input type="password" placeholder="password" onChange={(e) => {
+                <input type="password" placeholder="Password..." onChange={(e) => {
                     setPassword(e.target.value)
                     console.log(password)
                 }} />
