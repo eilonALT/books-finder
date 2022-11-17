@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react"
-
+import { useNavigate } from "react-router-dom"
 const Sign = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
+    const navigate = useNavigate()
+
+    const Signin = () => {
+        navigate("/home")
+    }
     return (
         <div className="sign">
             <h1>Books Finder</h1>
@@ -18,7 +23,7 @@ const Sign = () => {
                     setPassword(e.target.value)
                     console.log(password)
                 }} />
-                <button>Sign In</button>
+                <button onClick={Signin()}>Sign In</button>
                 <button>Sign Up</button>
             </div>
         </div>
