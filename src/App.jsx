@@ -12,7 +12,7 @@ import Home from './components/Home';
 import Search from './components/Search';
 import WishList from './components/WishList';
 import Sign from './components/Sign';
-
+import SearchBar from './components/SearchBar.jsx/Searchbar';
 function App() {
   return (
     <Router>
