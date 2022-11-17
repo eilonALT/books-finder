@@ -7,8 +7,14 @@ const Sign = () => {
     const navigate = useNavigate()
 
     const Signin = () => {
-        navigate("/home")
-        localStorage.setItem("username", username)
+        if (username != "" && password != "") {
+            navigate("/home")
+            localStorage.setItem("username", username)
+        }
+        else {
+            alert("Please enter username and password")
+        }
+
     }
     return (
         <div className="sign">
@@ -28,7 +34,7 @@ const Sign = () => {
                 }} />
                 <div className="form-buttons">
                     <button onClick={Signin}>Sign In</button>
-                    <button>Sign Up</button>
+                    <button onClick={() => { alert("not available yet") }}>Sign Up</button>
                 </div>
             </div>
         </div>
