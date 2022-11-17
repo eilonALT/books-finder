@@ -8,6 +8,7 @@ const Sign = () => {
 
     const Signin = () => {
         navigate("/home")
+        localStorage.setItem("username", username)
     }
     return (
         <div className="sign">
