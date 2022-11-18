@@ -22,10 +22,6 @@ const SearchBar = () => {
         console.log(searchValue)
     }
 
-    // useEffect(() => {
-    //     console.log("[SearchBar]=> useEffect")
-    // }, [books])
-
     return (
         <div className="searchBar">
             <input type="text" placeholder="book name..." value={searchValue} onChange={e => {
