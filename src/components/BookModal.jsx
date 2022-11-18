@@ -13,7 +13,7 @@ const BookModal = ({ book, onClose }) => {
                     <h2>written by {book.volumeInfo.authors}</h2>
                 </div>
                 <div className="modal-body">
-                    <p>{book.volumeInfo.description.slice(0, 400)}</p>
+                    <p>{book.volumeInfo.description?.slice(0, 400)}</p>
                     <button>Wish</button>
                 </div>
             </div>
