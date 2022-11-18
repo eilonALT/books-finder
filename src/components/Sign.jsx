@@ -7,7 +7,7 @@ const Sign = () => {
     const navigate = useNavigate()
 
     const Signin = () => {
-        if (username != "" && password != "") {
+        if (username !== "" && password !== "") {
             navigate("/home")
             localStorage.setItem("username", username)
         }
