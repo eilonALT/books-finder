@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BookCard from "../BookCard";
-
+import Pagination from "../Pagination";
 const SearchBar = () => {
     const [searchValue, setSearchValue] = useState("")
     const [books, setBooks] = useState([])
@@ -40,6 +40,7 @@ const SearchBar = () => {
                     )
                 }) : <p>didn't find anything...</p>}
             </div>
+            <Pagination/>
         </div>
     )
 }
