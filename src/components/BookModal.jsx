@@ -8,12 +8,13 @@ const BookModal = ({ book, onClose }) => {
             </div>
             <div className="modal-content">
                 <div className="modal-header">
-                    <button onClick={onClose}>X</button>
+                    <button>Wish</button>
+                    <button className="modal-close" onClick={onClose}>X</button>
                     <h1>{book.volumeInfo.title}</h1>
                     <h2>written by {book.volumeInfo.authors}</h2>
                 </div>
                 <div className="modal-body">
-                    <p>{book.description}</p>
+                    <p>{book.volumeInfo.description}</p>
                 </div>
             </div>
         </div>

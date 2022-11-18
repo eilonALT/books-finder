@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
+import { useEffect } from "react";
 import BookCard from "../BookCard";
 import Pagination from "../Pagination";
 const SearchBar = () => {
     const [searchValue, setSearchValue] = useState("")
     const [books, setBooks] = useState([])
-
+    const [startIndex, setstartIndex] = useState(1);
+    const [wishlist, setWishlist] = useState([])
 
     const HandleClearClick = () => {
         setSearchValue("")
@@ -14,12 +16,41 @@ const SearchBar = () => {
     }
 
     const HandleSearchClick = () => {
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&maxResults=20`)
+        setstartIndex(1)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&maxResults=20&startIndex=${startIndex}`)
             .then(res => res.json())
             .then(data => {
                 setBooks(data.items)
             })
         console.log(searchValue)
+    }
+
+    const pageNext = () => {
+        let newStartIndex = startIndex + 20
+        setstartIndex(newStartIndex)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&maxResults=20&startIndex=${newStartIndex}`)
+            .then(res => res.json())
+            .then(data => {
+                setBooks(data.items)
+            })
+    }
+
+    const pagePrev = () => {
+        let newStartIndex;
+
+        if (startIndex - 20 < 1) {
+            newStartIndex = 1
+            setstartIndex(1)
+        }
+        else {
+            newStartIndex = startIndex - 20
+            setstartIndex(newStartIndex)
+        }
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&maxResults=20&startIndex=${newStartIndex}`)
+            .then(res => res.json())
+            .then(data => {
+                setBooks(data.items)
+            })
     }
 
     return (
@@ -36,7 +67,7 @@ const SearchBar = () => {
                     )
                 }) : <p>didn't find anything...</p>}
             </div>
-            <Pagination/>
+            {books?.length > 0 ? <Pagination pageNext={pageNext} pagePrev={pagePrev} /> : null}
         </div>
     )
 }
