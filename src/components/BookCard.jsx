@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import BookModal from "./BookModal";
 
 
-const BookCard = ({ book,addToWish }) => {
+const BookCard = ({ book }) => {
     const [open, setOpen] = useState(false);
     const decription = book.volumeInfo.description?.slice(0, 100)
 
@@ -23,7 +23,7 @@ const BookCard = ({ book,addToWish }) => {
                 <span onClick={() => {
                     setOpen(true)
                 }} style={{ color: "rgb(120, 226, 104)" }}>Read More</span>
-                {open && <BookModal addToWish={addToWish} book={book} onClose={onClose} />}
+                {open && <BookModal book={book} onClose={onClose} />}
             </div>
         </div>
     )
