@@ -2,14 +2,15 @@ const BookModal = ({ book, onClose }) => {
     return (
         <div className="modal">
             <div className="modal-img">
-                <img src={book.image
-                    ? book.image
+                <img style={{width:"250px",height:"400px"}} src={book.volumeInfo.imageLinks.thumbnail
+                    ? book.volumeInfo.imageLinks.thumbnail
                     : "https://via.placeholder.com/150"} alt={book.title} />
             </div>
             <div className="modal-content">
                 <div className="modal-header">
-                    <h2>{book.title}</h2>
                     <button onClick={onClose}>X</button>
+                    <h1>{book.volumeInfo.title}</h1>
+                    <h2>written by {book.volumeInfo.authors}</h2>
                 </div>
                 <div className="modal-body">
                     <p>{book.description}</p>
