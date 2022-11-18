@@ -1,4 +1,4 @@
-const BookModal = ({ book, onClose }) => {
+const BookModal = ({ book, onClose,addToWish }) => {
     return (
         <div className="modal">
             <div className="modal-img">
@@ -14,7 +14,7 @@ const BookModal = ({ book, onClose }) => {
                 </div>
                 <div className="modal-body">
                     <p>{book.volumeInfo.description.slice(0,400)}</p>
-                    <button>Wish</button>
+                    <button onClick={addToWish(book)}>Wish</button>
                 </div>
             </div>
         </div>

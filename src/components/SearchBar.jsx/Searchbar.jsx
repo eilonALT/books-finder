@@ -6,8 +6,13 @@ const SearchBar = () => {
     const [searchValue, setSearchValue] = useState("")
     const [books, setBooks] = useState([])
     const [startIndex, setstartIndex] = useState(1);
-    const [wishlist, setWishlist] = useState([])
-
+    const [wishList, setWishList] = useState([])
+    useEffect = (() => {
+        localStorage.setItem("wishList", wishList)
+    }, [wishList])
+    const addToWish = (book) => {
+        wishList.push(book);
+    }
     const HandleClearClick = () => {
         setSearchValue("")
         if (searchValue === "") {
@@ -63,7 +68,7 @@ const SearchBar = () => {
             <div className="books-container">
                 {books ? books.map((book) => {
                     return (
-                        <BookCard book={book} key={`${book.id}-key`} />
+                        <BookCard addToWish={addToWish} book={book} key={`${book.id}-key`} />
                     )
                 }) : <p>didn't find anything...</p>}
             </div>
